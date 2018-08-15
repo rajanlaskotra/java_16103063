@@ -5,8 +5,8 @@ class CSX_358_HW1_16103063 {
 	
 	public static void main(String[] args)throws Exception
    {
-	   File input = new File("/home/rajan/Desktop/HW1/HW1-data.txt");    //input file.
-	   File output = new File("/home/rajan/Desktop/HW1/HW1-output-16103063.txt");    //output file.
+	   File input = new File("C:\\Users\\Rajan\\Desktop\\16103063\\CSX-358-HW1\\HW1\\HW1-data.txt");    //input file.
+	   File output = new File("C:\\Users\\Rajan\\Desktop\\16103063\\CSX-358-HW1\\HW1\\HW1-output-16103063.txt");    //output file.
 	   Scanner sc = new Scanner(input);   //load inputStream.
 	   PrintWriter printer = new PrintWriter(output);  //load outputStream.
 	   
@@ -27,9 +27,9 @@ class CSX_358_HW1_16103063 {
 		   printer.print(String.format("%08d",object.stdnt_ID)+"  "+object.ex+"  ");
 		   
 		   for(int i = 0;i < 10; i++)
-		      printer.print(String.format("%02d",object.assgmt[i]) + " ");
+		      printer.print(String.format("%2d",object.assgmt[i]) + " ");
 		   
-		   printer.println(" " + object.total+"  "+object.midterm+"   "+object.finalp+"  "+String.format("%02d",object.codep)+"  "+object.points+"   "+object.per+"   "+object.grade+" ");
+		   printer.println(" " + object.total+"  "+object.midterm+"   "+object.finalp+"  "+String.format("%2d",object.codep)+"  "+object.points+"   "+object.per+"   "+object.grade+" ");
 		   
 		   if(object.points > maxPoints)
 			     maxPoints = object.points;
@@ -54,4 +54,3 @@ class CSX_358_HW1_16103063 {
    }
 	
 }
-

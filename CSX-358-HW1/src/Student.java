@@ -1,4 +1,3 @@
-
 public class Student {
     long stdnt_ID;
     int ex;
@@ -12,7 +11,7 @@ public class Student {
     	total=0;
     }
     void cal(String s)throws NumberFormatException {
-    	
+        s = s.replace("  "," ").replace(", "," ");
     	String str[] = s.split(" ");                //split each spaced Integer into String array. 
     	stdnt_ID = Long.parseLong(str[0]);          //convert str[0] to long. i.e student ID.
     	ex = Integer.parseInt(str[1]);             //convert str[1] to int.   i.e exercise points.
@@ -30,7 +29,7 @@ public class Student {
     	
 }
      void grades(int points){
-    	 per = (points*100)/420;
+    	 per = Math.round(((float) points/420)*100);
     	 if(per >= 90){
     		 grade = 'A';
     		 gradesCount[0]++;
@@ -52,6 +51,5 @@ public class Student {
     		 gradesCount[4]++;
     	 }
      }
-     
      
 }
