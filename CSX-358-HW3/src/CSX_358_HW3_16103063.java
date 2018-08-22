@@ -27,15 +27,22 @@ public class CSX_358_HW3_16103063 {
 		
 	}
 	// Function to check If the line of code is Comment or not.
-	static boolean checkComment(String s){
-		
-		s = s.trim();
-		String[] temp = s.split(" ");
+	static int checkComment(String t){
+		String ch = t;
+		t = t.replaceAll("\\s{2,}"," ").trim();
+		String[] temp = t.split(" ");
 		if(Arrays.asList(temp).contains("//"))
-			return true;
+		{
+			if(temp[0] == "//" )
+				return 0;          //complete comment
+			else
+			{
+				int index = ch.indexOf("//", -1);
+				return index;    //comment after code (i.e like this line 41.)
+			}
+		}
 		else
-			return false;
-			
+			return -1;   // no comment found.
 	}
 
 	public static void main(String[] args)throws Exception{
@@ -71,12 +78,16 @@ public class CSX_358_HW3_16103063 {
 			s = s.replaceAll("[^\\w\\s//]"," ");        // replace all special chars except alphanumeric,spaces & '//' with single whitespace.
 			//s = s.replaceAll("\\s{2,}"," ").trim();   //replace all more than one whitespace into one space & trim() clears whitespace at beg. and end.
 			
-			boolean ch = checkComment(s);
-			if(ch){
+			int ch = checkComment(s);
+			if(ch == 0){
 		        lineCount++;
 				continue;
 			}
-			
+			if(ch != -1)
+			{
+				s = s.substring(0, ch+1);
+			}
+	
 			String[] str = s.split(" "); 
 			int loc = 0;
 	        boolean flag = true;                      // Flag to resolve the multiple keyWords on Single line 
